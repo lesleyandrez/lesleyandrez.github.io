@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Arquivo de 2016/3 | Lesley Andrez</title>
+  <meta name="author" content="Lesley">
+  
+  <meta name="description" content="HTML,CSS,JS,ES6,SVG,NodeJS,...,BlaBla,PHP,NPM,Tudo">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Lesley Andrez"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Lesley Andrez" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/estilo.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+<body>
+  <header id="header"><div class="top-bar">
+  <nav id="menu-principal">
+    <button class="open-close">
+      <span>|</span>
+      <span>|</span>
+      <span>|</span>
+    </button>
+    <div>
+      <div class="profile">
+
+      </div>
+    </div>
+    <ul>
+      
+      <li>
+        <a href="/">
+          <span>Início</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/arquivos">
+          <span>Arquivos</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/bolota">
+          <span>Bolota</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+  <div class="space">
+  </div>
+  <div id="pesquisa-posts">
+    <input type="text" class="target">
+  </div>
+  <button class="search">
+    <img class="icon-search" src="/img/search.svg" alt="">
+    <img class="icon-close" src="/img/close.svg" alt="">
+  </button>
+</div>
+
+
+</header>
+  <div id="content">
+      <div id="wrapper">
+<div class="placeholder-top-bar"></div>
+<h2 class="archive-title">2016/3</h2>
+
+
+  <div class="archive list-posts-home">
+    
+      <article class="post">
+    <div>
+  <h2><a href="/bem-vindo-ao-meu-blog/">
+    Seja bem-vindo ao meu blog
+  </a></h2>
+  <time datetime="2016-03-07T04:00:51.000Z">07/03/2016</time>
+  <h3></h3>
+</div>
+
+</article>
+
+
+
+    
+  </div>
+
+
+</div>
+  </div>
+  <footer id="footer">Feito com <a href="https://hexo.io/">Hexo</a> e ❤ by Lesley
+
+<!-- 
+&copy; 2016 Lesley
+ -->
+</footer>
+  <script src="/js/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/typed.min.js"></script>
+<script src="/js/hogan.js"></script>
+<script src="/js/smooth-scroll.min.js"></script>
+<script src="/js/typeahead.min.js"></script>
+<script>
+			smoothScroll.init({
+				updateURL: false, // Boolean. If true, update the URL hash on scroll
+				offset: '-3px'
+			});
+</script>
+<script type="text/javascript">
+
+(function(){
+	// Hide Header on on scroll down
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $('#header .top-bar').outerHeight();
+
+$(window).scroll(function(event){
+    didScroll = true;
+});
+
+setInterval(function() {
+    if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+    }
+}, 250);
+
+function hasScrolled() {
+    var st = $(this).scrollTop();
+
+    // Make sure they scroll more than delta
+    if(Math.abs(lastScrollTop - st) <= delta)
+        return;
+
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+    if (st > lastScrollTop && st > navbarHeight){
+        // Scroll Down
+        $('#header .top-bar').removeClass('nav-down').addClass('nav-up');
+    } else {
+        // Scroll Up
+        if(st + $(window).height() < $(document).height()) {
+            $('#header .top-bar').removeClass('nav-up').addClass('nav-down');
+        }
+    }
+
+    lastScrollTop = st;
+}
+})();
+
+
+$('#pesquisa-posts .target').typeahead([
+	{
+		hint: true,
+		highlight: true,
+		minLength: 1,
+		valueKey: 'value',
+		prefetch: {
+			url: '/content.json',
+			filter: function (objs) {
+				return $.map(objs, function (obj) {
+
+					var _tokens = obj.title.split(' ')
+
+					var _tags = [];
+
+					obj.tags.forEach(function(el, i){
+						_tokens.push(el.name);
+						_tags.push('<span class="tag-'+el.name+'">'+el.name+'</span>');
+					});
+
+					_tags = _tags.join('');
+
+					var old_element = document.querySelector("#pesquisa-posts .tt-dropdown-menu .tt-suggestion");
+					if(old_element){
+						var new_element = old_element.cloneNode(true);
+						old_element.parentNode.replaceChild(new_element, old_element);
+					}
+
+					return {
+						value: obj.title,
+						tags: _tags,
+						slug: obj.slug,
+						tokens: _tokens
+					};
+				});
+			}
+		},
+		header: '<span class="header-posts">Posts</span>',
+		template: [
+		'<div class="item"><span class="title">{{value}}</span>',
+		'<span class="sugestion-tags">',
+		'{{{tags}}}',
+		'</span>',
+		'</div>'
+		].join(''),
+		engine: Hogan
+	}
+	])
+;	// .on('typeahead:selected', function($e, datum){
+	// 	alert(datum);
+	// });
+
+function haaa(event){
+	console.log('stoopppinggg....');
+	event.stopPropagation();
+}
+
+$("#pesquisa-posts").on('click', '.tt-suggestion', haaa);
+$("#pesquisa-posts").on('mousedown', '.tt-suggestion', haaa);
+
+window.blogMenu = (function(){
+
+  var $_menu = document.querySelector('#menu-principal');
+
+  var _init = function(){
+    _initEventos();
+  };
+
+  function _initEventos(){
+    $_menu.querySelector('.open-close').addEventListener('click', function(){
+      _alternar();
+    });
+
+    document.addEventListener('click', function(event){
+      var el = event.target;
+
+      elTemp = el;
+
+      while(true){
+        if(elTemp && elTemp.classList && elTemp.classList.contains('aberto')){
+          if(elTemp.getAttribute('id') == 'menu-principal'){
+            break;
+          }
+        } else {
+          if(elTemp == document){
+            _fechar();
+            break;
+          }
+          elTemp = elTemp && elTemp.parentNode;
+        }
+      }
+
+    });
+
+  }
+
+  function _alternar(){
+    $_menu.classList.toggle('aberto');
+    if($_menu.classList.contains('aberto')){
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'scroll';
+    }
+  }
+
+  function _fechar(){
+    $_menu.classList.remove('aberto');
+    document.body.style.overflow = 'scroll';
+  };
+
+  return{
+    init: _init,
+    alternar: _alternar,
+    fechar: _fechar
+  };
+})();
+
+blogMenu.init();
+
+$(document).ready(function(){
+
+	$('.search').on('click',function(){
+		$("#pesquisa-posts").toggleClass('show');
+		if($("#pesquisa-posts").hasClass('show')){
+			$("#pesquisa-posts input").eq(1).focus();
+		}
+	});
+
+  (function(){
+
+    var haha = "HTML,CSS,JS,ES6,SVG,NodeJS,...,BlaBla,PHP,NPM,Tudo";
+    haha = haha.split(',');
+
+    var siteDescription = $('#description-site');
+    siteDescription.typed({
+      strings: haha,
+      typeSpeed: 250,
+      backSpeed: 50
+    });
+
+  })();
+
+});
+</script>
+
+
+
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+    <script src="/fancybox/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript">
+    (function($){
+      $('.fancybox').fancybox();
+    })(jQuery);
+    </script>
+
+    
+
+</body>
+</html>
