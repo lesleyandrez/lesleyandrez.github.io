@@ -457,18 +457,10 @@ article.link .title a:after {
   font-family: FontAwesome;
 }
 .archive-title {
-  color: #999999;
-  font-weight: normal;
-  margin-bottom: 30px;
+  color: #004966;
+  font-weight: 900;
   text-shadow: 0 0 1px #ffffff;
-}
-.archive-title:before {
-  font-family: FontAwesome;
-  content: 'icon-arquive';
-  padding-right: 15px;
-}
-.archive-title.tag:before {
-  content: '\f02b';
+  font-size: 3rem;
 }
 .archive-title.category:before {
   content: 'icon-category';
