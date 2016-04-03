@@ -134,8 +134,7 @@
     <footer>
       
         <!--  -->
-        <hr>
-
+        
 
         
       
@@ -143,6 +142,7 @@
     </footer>
   </div>
 </article>
+
 
 
 </div>
@@ -258,9 +258,10 @@ $('#pesquisa-posts .target').typeahead([
 		engine: Hogan
 	}
 	])
-;	// .on('typeahead:selected', function($e, datum){
-	// 	alert(datum);
-	// });
+ 	.on('typeahead:selected', function($e, datum){
+	 	console.log(datum);
+		window.location.pathname = '/'+datum.slug;
+	});
 
 function haaa(event){
 	console.log('stoopppinggg....');

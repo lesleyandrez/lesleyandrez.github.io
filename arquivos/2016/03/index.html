@@ -102,20 +102,6 @@
     
       <article class="post">
     <div>
-  <h2><a href="/mais-uma/">
-    Só um teste
-  </a></h2>
-  <time datetime="2016-03-13T00:48:40.000Z">12/03/2016</time>
-  <h3>Descrição do teste</h3>
-</div>
-
-</article>
-
-
-
-    
-      <article class="post">
-    <div>
   <h2><a href="/bem-vindo-ao-meu-blog/">
     Seja bem-vindo ao meu blog
   </a></h2>
@@ -124,6 +110,7 @@
 </div>
 
 </article>
+
 
 
 
@@ -244,9 +231,10 @@ $('#pesquisa-posts .target').typeahead([
 		engine: Hogan
 	}
 	])
-;	// .on('typeahead:selected', function($e, datum){
-	// 	alert(datum);
-	// });
+ 	.on('typeahead:selected', function($e, datum){
+	 	console.log(datum);
+		window.location.pathname = '/'+datum.slug;
+	});
 
 function haaa(event){
 	console.log('stoopppinggg....');

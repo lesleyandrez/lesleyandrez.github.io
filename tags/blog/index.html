@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>blog | Lesley Andrez</title>
+  <title>Blog | Lesley Andrez</title>
   <meta name="author" content="Lesley">
   
   <meta name="description" content="HTML,CSS,JS,ES6,SVG,NodeJS,...,BlaBla,PHP,NPM,Tudo">
@@ -92,7 +92,7 @@
 
 <span class="archive-title tag">
 
-  blog
+  Blog
 </span>
 
 </div>
@@ -102,14 +102,15 @@
     
       <article class="post">
     <div>
-  <h2><a href="/bem-vindo-ao-meu-blog/">
-    Seja bem-vindo ao meu blog
+  <h2><a href="/Comentarios-do-Blog/">
+    Comentários do Blog
   </a></h2>
-  <time datetime="2016-03-07T04:00:51.000Z">07/03/2016</time>
-  <h3>Ainda não tem nada que presta, mas tem que começar de alguma maneira neh, pois então... Comecei!</h3>
+  <time datetime="2016-04-03T19:05:40.000Z">03/04/2016</time>
+  <h3>Como que os comentários do blog funcionam</h3>
 </div>
 
 </article>
+
 
 
 
@@ -229,9 +230,10 @@ $('#pesquisa-posts .target').typeahead([
 		engine: Hogan
 	}
 	])
-;	// .on('typeahead:selected', function($e, datum){
-	// 	alert(datum);
-	// });
+ 	.on('typeahead:selected', function($e, datum){
+	 	console.log(datum);
+		window.location.pathname = '/'+datum.slug;
+	});
 
 function haaa(event){
 	console.log('stoopppinggg....');
