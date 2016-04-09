@@ -6,10 +6,32 @@
     <entry>
       <title><![CDATA[Comentários do Blog]]></title>
       <url>http://qmude.com/Comentarios-do-Blog/</url>
-      <content type="html"><![CDATA[<h2 id="Introdu_E7_E3o"><a href="#Introdu_E7_E3o" class="headerlink" title="Introdução"></a>Introdução</h2><p>Este blog usa o sistema de comentários de um serviço gratuito chamado <strong>Discuss</strong>.</p>
-<p>Logo vou explirar aqui como funciona o sistema de cometários do <strong>blog</strong> e o porque de usar o Discuss.</p>
-<h2 id="Porque_3F"><a href="#Porque_3F" class="headerlink" title="Porque?"></a>Porque?</h2><p>Em breve…</p>
-<h2 id="Vantagens_e_Desvantagens"><a href="#Vantagens_e_Desvantagens" class="headerlink" title="Vantagens e Desvantagens"></a>Vantagens e Desvantagens</h2><p>Em breve…</p>
+      <content type="html"><![CDATA[<h2 id="Introdu_E7_E3o"><a href="#Introdu_E7_E3o" class="headerlink" title="Introdução"></a>Introdução</h2><p>Este blog usa o sistema de comentários de um serviço gratuito chamado <a href="https://disqus.com" target="_blank" rel="external">Disqus</a>.</p>
+<p>E eu considerei ele a melhor opção para colocar em meu blog.</p>
+<p>Vamos conferir meus motivos?</p>
+<h2 id="Porque_3F"><a href="#Porque_3F" class="headerlink" title="Porque?"></a>Porque?</h2><p>Primeiro porque este é um blog estático, portanto não tem bancos de dados e é basicamente um monte de arquivos html, css e JavaScript (client side), e não usa linguagem server side, como PHP, Ruby ou JavaScript.</p>
+<p>Segundo… é… porque é muito fácil!<br>Em pouquíssimo tempo integrei o sistema de comentários no blog.</p>
+<p>E por último é que o sistema de comentários  da <strong>Disqus</strong> é muito TOOOP. Vários sites estão usando, não somente blogs estáticos, de tão TOP que é!</p>
+<p>Podemos dizer que a <strong>Disqus</strong> que é uma rede social de comentários.<br>Você pode se conectar usando as contas do Google, Facebook ou Twitter, seguir pessoas, compartilhar…</p>
+<p>Agora vamos ver os recursos que o deixa tão TOP assim.</p>
+<h2 id="Recursos"><a href="#Recursos" class="headerlink" title="Recursos"></a>Recursos</h2><p> - Votação positiva ou negativa.</p>
+<p>- Ordenar comentários por, mais votados, mais recentes ou mais antigos. :open_mouth: :open_mouth: :open_mouth:</p>
+<p><img src="/assets/comentarios-do-blog/votacao.png" alt=""></p>
+<p>- Responder comentários específicos. :grin: :grin: :grin:</p>
+<p><img src="/assets/comentarios-do-blog/responder.png" alt=""></p>
+<p>- Moderação através do painel administrativo da <strong>Disqus</strong>.</p>
+<p>- Qualquer um pode ajudar na moderação, clicando no ícone que indica que um determinado comentário é inapropriado.</p>
+<p><img src="/assets/comentarios-do-blog/moderacao.png" alt=""></p>
+<p>- Compartilhar no Facebook ou no Twitter.</p>
+<p><img src="/assets/comentarios-do-blog/compartilhar.png" alt=""></p>
+<p>- E para fechar… da pra ir no perfil de uma pessoa e ver quantos comentários ela já vez, onde ela comentou e quem ela esta seguindo… :scream: :scream: :scream:</p>
+<p>- E claro você pode configurar nas configurações do seu perfil o modo de privacidade, onde ninguem vai ver quem você esta seguindo ou quais lugares você comentou através do <strong>Disqus</strong>. :sunglasses: :sunglasses: :sunglasses:</p>
+<h2 id="Alternativas"><a href="#Alternativas" class="headerlink" title="Alternativas"></a>Alternativas</h2><p>Temos o sistema de comentários do <strong>Facebook</strong> :yum: que é muito usado também e do <strong>Google+</strong>  :disappointed_relieved: que é bem esquecido.</p>
+<p>Conhece ou usou outro? Comente ai e ajude a melhorar este post.</p>
+<h2 id="Conclus_E3o"><a href="#Conclus_E3o" class="headerlink" title="Conclusão"></a>Conclusão</h2><p>Gostei muito do que este serviço oferece e ainda é totalmente grátis.</p>
+<p>Esta é uma ótima alternativa para quem não quer desenvolver do zero um  sistema de comentários ou simplesmente.</p>
+<p>E você? Gostou do que o <strong>Disqus</strong> pode oferecer? Achou algum quesito nele a ponto de não querer usá-lo?</p>
+<p>Comenta ai ;)</p>
 ]]></content>
     </entry>
     

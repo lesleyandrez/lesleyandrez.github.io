@@ -1,9 +1,13 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
   <title>Arquivo de 2016/4 | Lesley Andrez</title>
+  <script src="/js/emojify.min.js"></script>
+  <style>
+    .emoji { width: 1.5em; height: 1.5em; display: inline-block; margin-bottom: -.25em; background-size: 1.5em; }
+  </style>
   <meta name="author" content="Lesley">
   
   <meta name="description" content="HTML,CSS,JS,ES6,SVG,NodeJS,...,BlaBla,PHP,NPM,Tudo">
@@ -21,6 +25,7 @@
   <link href="/favicon.png" rel="icon">
   <link rel="alternate" href="/atom.xml" title="Lesley Andrez" type="application/atom+xml">
   <link rel="stylesheet" href="/css/estilo.css" media="screen" type="text/css">
+
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 	<script>
@@ -127,12 +132,23 @@
  -->
 </footer>
   <script src="/js/jquery-2.2.0.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
 <script src="/js/typed.min.js"></script>
 <script src="/js/hogan.js"></script>
 <script src="/js/smooth-scroll.min.js"></script>
 <script src="/js/typeahead.min.js"></script>
+
+<script>
+      emojify.setConfig({
+				emojify_tag_type:'div',
+				img_dir: '/emoji/',
+				blacklist: {
+	          'ids': [],
+	          'classes': ['no-emojify'],
+	          'elements': ['^script$', '^textarea$', '^a$', '^pre$', '^code$']
+	        }
+				});
+      emojify.run();
+</script>
 <script>
 			smoothScroll.init({
 				updateURL: false, // Boolean. If true, update the URL hash on scroll
@@ -257,26 +273,26 @@ window.blogMenu = (function(){
       _alternar();
     });
 
-    document.addEventListener('click', function(event){
-      var el = event.target;
+    //document.addEventListener('click', function(event){
+      //var el = event.target;
 
-      elTemp = el;
+      //elTemp = el;
 
-      while(true){
-        if(elTemp && elTemp.classList && elTemp.classList.contains('aberto')){
-          if(elTemp.getAttribute('id') == 'menu-principal'){
-            break;
-          }
-        } else {
-          if(elTemp == document){
-            _fechar();
-            break;
-          }
-          elTemp = elTemp && elTemp.parentNode;
-        }
-      }
+      //while(true){
+        //if(elTemp && elTemp.classList && elTemp.classList.contains('aberto')){
+          //if(elTemp.getAttribute('id') == 'menu-principal'){
+            //break;
+          //}
+        //} else {
+          //if(elTemp == document){
+            //_fechar();
+            //break;
+          //}
+          //elTemp = elTemp && elTemp.parentNode;
+        //}
+      //}
 
-    });
+    //});
 
   }
 
@@ -332,15 +348,6 @@ $(document).ready(function(){
 
 
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-    <script src="/fancybox/jquery.fancybox.pack.js"></script>
-    <script type="text/javascript">
-    (function($){
-      $('.fancybox').fancybox();
-    })(jQuery);
-    </script>
-
-    
 
 </body>
 </html>
