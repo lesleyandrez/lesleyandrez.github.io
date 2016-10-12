@@ -14,6 +14,7 @@ body {
   flex-direction: column;
 }
 body {
+  max-height: 100vh;
   background: #FAFAFA;
   color: #444444;
   font-family: 'Open Sans', sans-serif;
@@ -46,6 +47,11 @@ h2 {
   margin: 0 auto;
   padding: 0px 20px;
   padding: 30px 20px 30px;
+}
+@media only screen and (max-width: 529px) {
+  h2 {
+    font-size: 1.8rem;
+  }
 }
 h3 {
   font-size: 1.3em;
@@ -454,10 +460,32 @@ pre .deletion {
   font-style: oblique;
   font-size: 3rem;
 }
+@media only screen and (max-width: 529px) {
+  .header-site h1 {
+    font-size: 1.8rem;
+  }
+}
+@media only screen and (min-width: 530px) and (max-width: 949px) {
+  .header-site h1 {
+    font-size: 2.4rem;
+  }
+}
 .header-site h2 {
   font-weight: 100;
   font-size: 1.5rem !important;
   padding-top: 20px !important;
+}
+@media only screen and (max-width: 529px) {
+  .header-site h2 {
+    font-size: 1rem !important;
+    font-weight: 400;
+  }
+}
+@media only screen and (min-width: 530px) and (max-width: 949px) {
+  .header-site h2 {
+    font-size: 1.2rem !important;
+    font-weight: 400;
+  }
 }
 #main-col {
   width: 100%;
@@ -645,6 +673,13 @@ pre .deletion {
   transition: .3s;
   outline: 9999px solid rgba(0, 0, 0, 0);
   transform: translateX(-250px);
+  will-change: transform, outline, box-shadow;
+}
+#menu-principal .icon-close {
+  display: none;
+}
+#menu-principal button.open-close {
+  transition: .3s transform;
 }
 #menu-principal.aberto {
   transform: translateX(0px);
@@ -652,45 +687,41 @@ pre .deletion {
   box-shadow: 4px 0px 15px rgba(0, 0, 0, 0.2);
   transition: .5s;
 }
+#menu-principal.aberto .icon-close {
+  display: block;
+}
+#menu-principal.aberto .icon-menu {
+  display: none;
+}
+#menu-principal.aberto + .overlay {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+}
 #menu-principal.aberto ul li {
   opacity: 1;
   display: block;
 }
 #menu-principal.aberto button.open-close {
   color: #000;
-  transform: translateX(0px);
+  transition: .3s transform;
+  transform: translateX(-48px);
   background-color: #ffffff;
 }
 #menu-principal.aberto button.open-close span {
   transition: .3s;
 }
-#menu-principal.aberto button.open-close span:nth-child(2) {
-  opacity: 0;
-}
-#menu-principal.aberto button.open-close span:nth-child(1) {
-  transform: rotate(45deg);
-  position: relative;
-  left: 9px;
-  top: -1px;
-}
-#menu-principal.aberto button.open-close span:nth-child(3) {
-  transform: rotate(-45deg);
-  left: -9px;
-  position: relative;
-}
 #menu-principal button.open-close {
+  background-color: transparent;
   position: absolute;
   border: none;
   height: 48px;
   width: 48px;
-  right: 0px;
+  right: -48px;
   top: 0px;
-  transform: rotate(90deg) translateY(-48px);
-  font-size: 1.4rem;
-  color: rgba(0, 0, 0, 0.8);
-  background-color: transparent;
   cursor: pointer;
-  letter-spacing: -2px;
 }
 #menu-principal button.open-close:hover {
   color: #000;
@@ -698,13 +729,6 @@ pre .deletion {
 #menu-principal button.open-close:focus {
   outline: 1px dotted #CCC;
   outline-offset: -6px;
-}
-#menu-principal button.open-close span {
-  line-height: 0px;
-  margin: 0px;
-  padding: 0px;
-  display: inline-block;
-  transition: .1s transform;
 }
 #menu-principal .profile {
   height: 100px;
@@ -737,7 +761,7 @@ pre .deletion {
   padding: 0px 20px;
 }
 .top-bar {
-  height: 50px;
+  height: 48px;
   background: #FFF;
   position: fixed;
   width: 100%;
@@ -764,11 +788,11 @@ pre .deletion {
   outline-offset: -3px;
 }
 .top-bar .search img {
-  height: 20px;
+  height: 24px;
 }
 .top-bar .search img.icon-close {
   display: none;
-  height: 16px;
+  height: 24px;
 }
 .space {
   flex: 1;
@@ -868,6 +892,8 @@ time {
   right: 0px;
   z-index: -1;
   display: none;
+  max-width: calc( 100vw - 48px );
+  width: 400px;
 }
 #pesquisa-posts.show {
   display: block;
@@ -899,12 +925,14 @@ time {
   position: absolute;
   padding: 14px 8px;
   padding-right: 50px;
+  max-width: calc( 100vw - 48px );
   width: 400px;
 }
 span.tt-dropdown-menu {
   background: #FFF;
-  width: 393px;
+  width: 100%;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+  margin-top: -2px;
 }
 span.header-posts {
   font-size: .8rem;
@@ -926,7 +954,7 @@ input.tt-hint {
   box-shadow: 0px 0px 0.0001px rgba(0, 0, 0, 0.3);
 }
 .placeholder-top-bar {
-  height: 50px;
+  height: 48px;
   display: block;
   width: 100%;
   position: relative;
@@ -1009,4 +1037,17 @@ span.sugestion-tags {
   margin-top: 0px;
   margin-bottom: 30px;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+}
+.medium-zoom-overlay {
+  pointer-events: none;
+}
+a,
+button {
+  cursor: pointer !important;
+}
+a svg,
+button svg,
+a img,
+button img {
+  cursor: pointer !important;
 }

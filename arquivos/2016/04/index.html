@@ -46,9 +46,16 @@
   <header id="header"><div class="top-bar">
   <nav id="menu-principal">
     <button class="open-close">
-      <span>|</span>
-      <span>|</span>
-      <span>|</span>
+      <span class="icon-menu">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+      </span>
+      <span class="icon-close">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </span>
     </button>
     <div>
       <div class="profile">
@@ -70,13 +77,14 @@
       </li>
       
       <li>
-        <a href="/bolota">
-          <span>Bolota</span>
+        <a href="/sobre">
+          <span>Sobre</span>
         </a>
       </li>
       
     </ul>
   </nav>
+  <div class="overlay"></div>
   <div class="space">
   </div>
   <div id="pesquisa-posts">
@@ -111,7 +119,7 @@
     Comentários do Blog
   </a></h2>
   <time datetime="2016-04-03T19:05:40.000Z">03/04/2016</time>
-  <h3>Quer integrar um sistema de comentários no seu site ou blog? e não sabe ou não quer criar um? Vamos ver como ter um sistema bem legale rapidinho.</h3>
+  <h3>Quer integrar um sistema de comentários no seu site ou blog? e não sabe ou não quer criar um? Vamos ver como ter um sistema bem legal e rapidinho.</h3>
 </div>
 
 </article>
@@ -136,125 +144,134 @@
 <script src="/js/hogan.js"></script>
 <script src="/js/smooth-scroll.min.js"></script>
 <script src="/js/typeahead.min.js"></script>
+<script src="/js/medium-zoom.min.js"></script>
 
 <script>
-      emojify.setConfig({
-				emojify_tag_type:'div',
-				img_dir: '/emoji/',
-				blacklist: {
-	          'ids': [],
-	          'classes': ['no-emojify'],
-	          'elements': ['^script$', '^textarea$', '^a$', '^pre$', '^code$']
-	        }
-				});
-      emojify.run();
+  window.zoomMedium = mediumZoom(document.querySelectorAll('.trigger-zoom ~ img'));
+</script>
+
+<script>
+emojify.setConfig({
+  emojify_tag_type:'div',
+  img_dir: '/emoji',
+  blacklist: {
+    'ids': [],
+    'classes': ['no-emojify'],
+    'elements': ['^script$', '^textarea$', '^a$', '^pre$', '^code$']
+  }
+});
+emojify.run();
 </script>
 <script>
-			smoothScroll.init({
-				updateURL: false, // Boolean. If true, update the URL hash on scroll
-				offset: '-3px'
-			});
+smoothScroll.init({
+  updateURL: false, // Boolean. If true, update the URL hash on scroll
+  offset: '-3px'
+});
 </script>
 <script type="text/javascript">
 
 (function(){
-	// Hide Header on on scroll down
-var didScroll;
-var lastScrollTop = 0;
-var delta = 5;
-var navbarHeight = $('#header .top-bar').outerHeight();
+  // Hide Header on on scroll down
+  var didScroll;
+  var lastScrollTop = 0;
+  var delta = 5;
+  var navbarHeight = $('#header .top-bar').outerHeight();
 
-$(window).scroll(function(event){
+  $(window).scroll(function(event){
     didScroll = true;
-});
+  });
 
-setInterval(function() {
+  setInterval(function() {
     if (didScroll) {
-        hasScrolled();
-        didScroll = false;
+      hasScrolled();
+      didScroll = false;
     }
-}, 250);
+  }, 250);
 
-function hasScrolled() {
+  function hasScrolled() {
+    zoomMedium.hide();
     var st = $(this).scrollTop();
 
     // Make sure they scroll more than delta
     if(Math.abs(lastScrollTop - st) <= delta)
-        return;
+    return;
 
     // If they scrolled down and are past the navbar, add class .nav-up.
     // This is necessary so you never see what is "behind" the navbar.
     if (st > lastScrollTop && st > navbarHeight){
-        // Scroll Down
-        $('#header .top-bar').removeClass('nav-down').addClass('nav-up');
+      // Scroll Down
+      $('#header .top-bar').removeClass('nav-down').addClass('nav-up');
+      if(document.getElementById('pesquisa-posts').classList.contains('show')){
+        document.getElementById('pesquisa-posts').classList.remove('show')
+      }
     } else {
-        // Scroll Up
-        if(st + $(window).height() < $(document).height()) {
-            $('#header .top-bar').removeClass('nav-up').addClass('nav-down');
-        }
+      // Scroll Up
+      if(st + $(window).height() < $(document).height()) {
+        $('#header .top-bar').removeClass('nav-up').addClass('nav-down');
+      }
     }
 
     lastScrollTop = st;
-}
+  }
 })();
 
 
 $('#pesquisa-posts .target').typeahead([
-	{
-		hint: true,
-		highlight: true,
-		minLength: 1,
-		valueKey: 'value',
-		prefetch: {
-			url: '/content.json',
-			filter: function (objs) {
-				return $.map(objs, function (obj) {
+  {
+    hint: true,
+    highlight: true,
+    minLength: 1,
+    valueKey: 'value',
+    prefetch: {
+      url: '/content.json',
+      filter: function (objs) {
+        return $.map(objs, function (obj) {
 
-					var _tokens = obj.title.split(' ')
+          var _tokens = obj.title.split(' ')
 
-					var _tags = [];
+          var _tags = [];
 
-					obj.tags.forEach(function(el, i){
-						_tokens.push(el.name);
-						_tags.push('<span class="tag-'+el.name+'">'+el.name+'</span>');
-					});
+          obj.tags.forEach(function(el, i){
+            _tokens.push(el.name);
+            _tags.push('<span class="tag-'+el.name+'">'+el.name+'</span>');
+          });
 
-					_tags = _tags.join('');
+          _tags = _tags.join('');
 
-					var old_element = document.querySelector("#pesquisa-posts .tt-dropdown-menu .tt-suggestion");
-					if(old_element){
-						var new_element = old_element.cloneNode(true);
-						old_element.parentNode.replaceChild(new_element, old_element);
-					}
+          var old_element = document.querySelector("#pesquisa-posts .tt-dropdown-menu .tt-suggestion");
+          if(old_element){
+            var new_element = old_element.cloneNode(true);
+            old_element.parentNode.replaceChild(new_element, old_element);
+          }
 
-					return {
-						value: obj.title,
-						tags: _tags,
-						slug: obj.slug,
-						tokens: _tokens
-					};
-				});
-			}
-		},
-		header: '<span class="header-posts">Posts</span>',
-		template: [
-		'<div class="item"><span class="title">{{value}}</span>',
-		'<span class="sugestion-tags">',
-		'{{{tags}}}',
-		'</span>',
-		'</div>'
-		].join(''),
-		engine: Hogan
-	}
-	])
- 	.on('typeahead:selected', function($e, datum){
-	 	console.log(datum);
-		window.location.pathname = '/'+datum.slug;
-	});
+          return {
+            value: obj.title,
+            tags: _tags,
+            slug: obj.slug,
+            tokens: _tokens
+          };
+        });
+      }
+    },
+    header: '<span class="header-posts">Posts</span>',
+    template: [
+      '<div class="item"><span class="title">{{value}}</span>',
+      '<span class="sugestion-tags">',
+      '{{{tags}}}',
+      '</span>',
+      '</div>'
+    ].join(''),
+    engine: Hogan
+  }
+])
+.on('typeahead:selected', function($e, datum){
+  console.log(datum);
+  window.location.pathname = '/'+datum.slug;
+});
 
 function haaa(event){
-	console.log('stoopppinggg....');
-	event.stopPropagation();
+  console.log('stoopppinggg....');
+  event.stopPropagation();
 }
 
 $("#pesquisa-posts").on('click', '.tt-suggestion', haaa);
@@ -273,26 +290,9 @@ window.blogMenu = (function(){
       _alternar();
     });
 
-    //document.addEventListener('click', function(event){
-      //var el = event.target;
-
-      //elTemp = el;
-
-      //while(true){
-        //if(elTemp && elTemp.classList && elTemp.classList.contains('aberto')){
-          //if(elTemp.getAttribute('id') == 'menu-principal'){
-            //break;
-          //}
-        //} else {
-          //if(elTemp == document){
-            //_fechar();
-            //break;
-          //}
-          //elTemp = elTemp && elTemp.parentNode;
-        //}
-      //}
-
-    //});
+    $_menu.nextElementSibling.addEventListener('click', function(){
+      _fechar();
+    });
 
   }
 
@@ -321,12 +321,12 @@ blogMenu.init();
 
 $(document).ready(function(){
 
-	$('.search').on('click',function(){
-		$("#pesquisa-posts").toggleClass('show');
-		if($("#pesquisa-posts").hasClass('show')){
-			$("#pesquisa-posts input").eq(1).focus();
-		}
-	});
+  $('.search').on('click',function(){
+    $("#pesquisa-posts").toggleClass('show');
+    if($("#pesquisa-posts").hasClass('show')){
+      $("#pesquisa-posts input").eq(1).focus();
+    }
+  });
 
   (function(){
 
@@ -347,7 +347,7 @@ $(document).ready(function(){
 
 
 
-  
+    
 
 </body>
 </html>
